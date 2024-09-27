@@ -1,0 +1,6 @@
+{% extends "base.html" %} 
+{% block content %}
+{% for singleAlbum in albums %}
+	<p>{{ singleAlbum.album_name }}</p>
+{% endfor %}
+{% endblock content %}
