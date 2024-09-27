@@ -3,8 +3,8 @@ from album import views
 
 app_name = "album"
 urlpatterns = [
-    path("", views.ShowAddAlbumForm, name="add_album_form"),
-    path("albums/", views.ShowAlbums, name="all_albums"),
-    path("albums/edit/<str:pk>", views.EditAlbum, name="edit_album"),
-    path("albums/delete/<str:pk>", views.DeleteAlbum, name="delete_album"),
+    path("", views.ShowAlbums, name="all_albums"),
+    path("add/", views.ShowAddAlbumForm, name="add_album_form"),
+    path("edit/<str:pk>", views.EditAlbum, name="edit_album"),
+    path("delete/<str:pk>", views.DeleteAlbum, name="delete_album"),
 ]

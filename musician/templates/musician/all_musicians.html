@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<h1 class="mb-4">Musicians</h1>
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -27,8 +28,11 @@
 			  <td>{{ singleMusician.album.rating }}</td>
 			  <td>{{ singleMusician.instrument_type }}</td>
 			  <td>{{ singleMusician.album.album_name }}</td>
-			  <td>{{ singleMusician.album.release_date }}</td>
-			  <td><a href="{% url "album:edit_album" pk=singleMusician.album.id %}">Edit</a><a href="{% url "album:delete_album" pk=singleMusician.album.id %}">Delete</a></td>
+			  <td>{{ singleMusician.album.album_release_date|date:"d M Y" }}</td>
+			  <td>
+				  <a href="{% url "album:edit_album" pk=singleMusician.album.id %}">Edit</a>
+				  | 
+				  <a href="{% url "album:delete_album" pk=singleMusician.album.id %}">Delete</a></td>
 		  </tr>
 		{% endfor %}
     </tbody>

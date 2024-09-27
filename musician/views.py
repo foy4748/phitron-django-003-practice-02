@@ -7,6 +7,8 @@ from musician.models import Musician
 # Create your views here.
 def ShowMusicians(req):
     musicians = Musician.objects.all()
+    for m in musicians:
+        print(m.album)
     return render(req, "musician/all_musicians.html", {"musicians": musicians})
 
 

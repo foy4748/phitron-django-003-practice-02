@@ -1,6 +1,31 @@
 {% extends "base.html" %} 
 {% block content %}
-{% for singleAlbum in albums %}
-	<p>{{ singleAlbum.album_name }} | <a href="{% url "album:edit_album" pk=singleAlbum.id %}">✏</a> <a href="{% url "album:delete_album" pk=singleAlbum.id %}">❌</a></p>
-{% endfor %}
+<h1 class="mb-4">Albums</h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Album Rating</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+		{% for singleAlbum in albums %}
+		  <tr>
+			  <td>{{ singleAlbum.id }}</td>
+			  <td>{{ singleAlbum.album_name }}</td>
+			  <td>{{ singleAlbum.album_release_date|date:"d M Y" }}</td>
+			  <td>{{ singleAlbum.rating }}</td>
+			  <td>
+				  <a href="{% url "album:edit_album" pk=singleAlbum.id %}">Edit</a>
+				  | 
+				  <a href="{% url "album:delete_album" pk=singleAlbum.id %}">Delete</a></td>
+		  </tr>
+		{% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock content %}
