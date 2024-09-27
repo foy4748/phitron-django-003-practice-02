@@ -11,3 +11,6 @@ class Musician(models.Model):
     phone_number = models.CharField(max_length=512)
     instrument_type = models.CharField(max_length=512)
     album = models.ForeignKey(Album, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f"{self.first_name } {self.last_name}"
