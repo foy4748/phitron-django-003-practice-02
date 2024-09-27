@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% block content %}
 {% for singleAlbum in albums %}
-	<p>{{ singleAlbum.album_name }}</p>
+	<p>{{ singleAlbum.album_name }} | <a href="{% url "album:edit_album" pk=singleAlbum.id %}">✏</a> <a href="{% url "album:delete_album" pk=singleAlbum.id %}">❌</a></p>
 {% endfor %}
 {% endblock content %}
