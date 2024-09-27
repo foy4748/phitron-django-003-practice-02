@@ -12,6 +12,12 @@
 	</head>
 	<body>
 		<main class="container mt-4">
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="{% url "musician:add_musician_form" %}">Add Musician</a></li>
+				</ul>
+			</nav>
 			{% block content %}
 			<!-- All the Content Goes Here -->
 			{% endblock content %}
