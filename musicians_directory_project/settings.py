@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Apps
     "album",
     "musician",
+    "auth_app",
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Crispy Forms Related
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Authentication Related
+LOGIN_URL = "auth:login_form"

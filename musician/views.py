@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from musician.forms import AddMusicianForm
 from musician.models import Musician
@@ -14,19 +15,19 @@ class ShowMusicians(ListView):
     model = Musician
 
 
-class ShowAddMusicianForm(CreateView):
+class ShowAddMusicianForm(LoginRequiredMixin, CreateView):
     model = Musician
     form_class = AddMusicianForm
     success_url = reverse_lazy("musician:all_musicians")
 
 
-class EditMusician(UpdateView):
+class EditMusician(LoginRequiredMixin, UpdateView):
     model = Musician
     form_class = AddMusicianForm
     success_url = reverse_lazy("musician:all_musicians")
 
 
-class DeleteMusician(DeleteView):
+class DeleteMusician(LoginRequiredMixin, DeleteView):
     model = Musician
     success_url = reverse_lazy("musician:all_musicians")
 

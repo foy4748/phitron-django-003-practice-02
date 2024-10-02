@@ -1,27 +1,28 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from album.forms import AddAlbumForm
 from album.models import Album
-from django.views.generic import CreateView
-from django.views.generic.edit import UpdateView, DeleteView
 
 
 # Create your views here.
-class ShowAddAlbumForm(CreateView):
+class ShowAddAlbumForm(LoginRequiredMixin, CreateView):
     model = Album
     form_class = AddAlbumForm
     success_url = reverse_lazy("album:all_albums")
 
 
-class EditAlbum(UpdateView):
+class EditAlbum(LoginRequiredMixin, UpdateView):
     model = Album
     form_class = AddAlbumForm
     success_url = reverse_lazy("album:all_albums")
 
 
-class DeleteAlbum(DeleteView):
+class DeleteAlbum(LoginRequiredMixin, DeleteView):
     model = Album
     success_url = reverse_lazy("album:all_albums")
 
